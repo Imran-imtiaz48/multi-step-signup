@@ -4,165 +4,168 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Your Account</title>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Main Styles -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="signup-container">
-            <div class="header">
-                <h1>Create Account</h1>
-            </div>
+    <main class="container">
+        <section class="signup-container" aria-labelledby="signupTitle">
+            <header class="header">
+                <h1 id="signupTitle">Create Account</h1>
+            </header>
             
             <!-- Progress bar -->
-            <div class="progress-container">
+            <nav class="progress-container" aria-label="Progress">
                 <div class="progress-bar">
-                    <div class="progress"></div>
+                    <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
                 </div>
-                <div class="step-indicators">
-                    <div class="step active" data-step="1">
+                <ol class="step-indicators">
+                    <li class="step active" data-step="1" aria-current="step">
                         <span class="step-number">1</span>
                         <span class="step-text">Information</span>
-                    </div>
-                    <div class="step" data-step="2">
+                    </li>
+                    <li class="step" data-step="2">
                         <span class="step-number">2</span>
                         <span class="step-text">Password</span>
-                    </div>
-                    <div class="step" data-step="3">
+                    </li>
+                    <li class="step" data-step="3">
                         <span class="step-number">3</span>
                         <span class="step-text">Terms</span>
-                    </div>
-                </div>
-            </div>
+                    </li>
+                </ol>
+            </nav>
             
             <!-- Form container -->
-            <div class="form-container">
-                <!-- Step 1: Basic information -->
-                <div class="form-step active" id="step1">
-                    <h2>Basic Information</h2>
+            <form class="form-container" novalidate>
+                <!-- Step 1 -->
+                <fieldset class="form-step active" id="step1">
+                    <legend>Basic Information</legend>
                     <div class="form-group">
                         <label for="fullName">Full Name</label>
                         <div class="input-group">
-                            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name">
-                            <span class="input-icon"><i class="fas fa-user"></i></span>
+                            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                            <span class="input-icon"><i class="fas fa-user" aria-hidden="true"></i></span>
                         </div>
-                        <span class="validation-message" id="fullNameValidation"></span>
+                        <span class="validation-message" id="fullNameValidation" role="alert"></span>
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
                         <div class="input-group">
-                            <input type="email" id="email" name="email" placeholder="Enter your email address">
-                            <span class="input-icon"><i class="fas fa-envelope"></i></span>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                            <span class="input-icon"><i class="fas fa-envelope" aria-hidden="true"></i></span>
                         </div>
-                        <span class="validation-message" id="emailValidation"></span>
+                        <span class="validation-message" id="emailValidation" role="alert"></span>
                     </div>
                     <div class="button-group">
-                        <div></div> <!-- Empty div for spacing -->
-                        <button type="button" class="btn btn-next" id="toStep2">Next <i class="fas fa-arrow-right"></i></button>
+                        <span></span>
+                        <button type="button" class="btn btn-next" id="toStep2" aria-label="Next to password step">Next <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
                     </div>
-                </div>
+                </fieldset>
                 
-                <!-- Step 2: Password creation -->
-                <div class="form-step" id="step2">
-                    <h2>Create Password</h2>
+                <!-- Step 2 -->
+                <fieldset class="form-step" id="step2">
+                    <legend>Create Password</legend>
                     <div class="form-group">
                         <label for="password">Password</label>
                         <div class="input-group">
-                            <input type="password" id="password" name="password" placeholder="Create a strong password">
-                            <span class="input-icon toggle-password"><i class="fas fa-eye-slash"></i></span>
+                            <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+                            <span class="input-icon toggle-password" role="button" tabindex="0"><i class="fas fa-eye-slash" aria-hidden="true"></i></span>
                         </div>
-                        <span class="validation-message" id="passwordValidation"></span>
+                        <span class="validation-message" id="passwordValidation" role="alert"></span>
                     </div>
                     
-                    <!-- Password strength meter -->
                     <div class="password-strength">
-                        <div class="strength-meter">
+                        <div class="strength-meter" aria-hidden="true">
                             <div class="strength-bar" id="strengthBar"></div>
                         </div>
                         <div class="strength-text" id="strengthText">Password strength</div>
                     </div>
                     
-                    <!-- Password requirements checklist -->
                     <div class="password-requirements">
                         <p>Your password must contain:</p>
                         <ul>
-                            <li id="length"><i class="fas fa-times-circle"></i> At least 8 characters</li>
-                            <li id="uppercase"><i class="fas fa-times-circle"></i> At least 1 uppercase letter</li>
-                            <li id="lowercase"><i class="fas fa-times-circle"></i> At least 1 lowercase letter</li>
-                            <li id="number"><i class="fas fa-times-circle"></i> At least 1 number</li>
-                            <li id="special"><i class="fas fa-times-circle"></i> At least 1 special character</li>
+                            <li id="length"><i class="fas fa-times-circle" aria-hidden="true"></i> At least 8 characters</li>
+                            <li id="uppercase"><i class="fas fa-times-circle" aria-hidden="true"></i> At least 1 uppercase letter</li>
+                            <li id="lowercase"><i class="fas fa-times-circle" aria-hidden="true"></i> At least 1 lowercase letter</li>
+                            <li id="number"><i class="fas fa-times-circle" aria-hidden="true"></i> At least 1 number</li>
+                            <li id="special"><i class="fas fa-times-circle" aria-hidden="true"></i> At least 1 special character</li>
                         </ul>
                     </div>
                     
                     <div class="form-group">
                         <label for="confirmPassword">Confirm Password</label>
                         <div class="input-group">
-                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password">
-                            <span class="input-icon toggle-password"><i class="fas fa-eye-slash"></i></span>
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                            <span class="input-icon toggle-password" role="button" tabindex="0"><i class="fas fa-eye-slash" aria-hidden="true"></i></span>
                         </div>
-                        <span class="validation-message" id="confirmPasswordValidation"></span>
+                        <span class="validation-message" id="confirmPasswordValidation" role="alert"></span>
                     </div>
                     
                     <div class="button-group">
-                        <button type="button" class="btn btn-prev" id="backToStep1"><i class="fas fa-arrow-left"></i> Previous</button>
-                        <button type="button" class="btn btn-next" id="toStep3">Next <i class="fas fa-arrow-right"></i></button>
+                        <button type="button" class="btn btn-prev" id="backToStep1"><i class="fas fa-arrow-left" aria-hidden="true"></i> Previous</button>
+                        <button type="button" class="btn btn-next" id="toStep3">Next <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
                     </div>
-                </div>
+                </fieldset>
                 
-                <!-- Step 3: Terms and conditions -->
-                <div class="form-step" id="step3">
-                    <h2>Terms and Conditions</h2>
+                <!-- Step 3 -->
+                <fieldset class="form-step" id="step3">
+                    <legend>Terms and Conditions</legend>
                     <div class="terms-container">
-                        <div class="terms-content">
+                        <article class="terms-content">
                             <h3>Terms of Service</h3>
                             <p>Please read these terms of service carefully before using our website and services. By accessing or using our service, you agree to be bound by these terms.</p>
-                            
+
                             <h4>1. Account Registration</h4>
                             <p>You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account.</p>
-                            
+
                             <h4>2. Privacy Policy</h4>
                             <p>Our privacy policy describes how we handle the information you provide to us when you use our services. You understand that through your use of the services you consent to the collection and use of this information.</p>
-                            
+
                             <h4>3. User Conduct</h4>
                             <p>You agree not to engage in any activity that interferes with or disrupts the services or the servers and networks connected to the services.</p>
-                            
+
                             <h4>4. Termination</h4>
                             <p>We may terminate or suspend your account and bar access to the service immediately, without prior notice or liability, under our sole discretion, for any reason whatsoever.</p>
-                        </div>
+                        </article>
                     </div>
                     
                     <div class="form-group checkbox-group">
-                        <input type="checkbox" id="agreeTerms" name="agreeTerms">
+                        <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
                         <label for="agreeTerms">I agree to the Terms of Service and Privacy Policy</label>
                     </div>
-                    <span class="validation-message" id="termsValidation"></span>
+                    <span class="validation-message" id="termsValidation" role="alert"></span>
                     
                     <div class="button-group">
-                        <button type="button" class="btn btn-prev" id="backToStep2"><i class="fas fa-arrow-left"></i> Previous</button>
-                        <button type="button" class="btn btn-submit" id="submitForm">Create Account <i class="fas fa-check"></i></button>
+                        <button type="button" class="btn btn-prev" id="backToStep2"><i class="fas fa-arrow-left" aria-hidden="true"></i> Previous</button>
+                        <button type="submit" class="btn btn-submit" id="submitForm">Create Account <i class="fas fa-check" aria-hidden="true"></i></button>
                     </div>
-                </div>
+                </fieldset>
                 
-                <!-- Success screen -->
-                <div class="form-step" id="success">
+                <!-- Success -->
+                <section class="form-step" id="success" aria-live="polite">
                     <div class="success-content">
                         <div class="success-icon">
-                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-check-circle" aria-hidden="true"></i>
                         </div>
                         <h2>Account Created Successfully!</h2>
                         <p>Thank you for signing up. Your account has been created and a confirmation email has been sent to your email address.</p>
                         <div class="button-group">
-                            <button type="button" class="btn btn-login" id="loginBtn">Go to Login <i class="fas fa-sign-in-alt"></i></button>
+                            <button type="button" class="btn btn-login" id="loginBtn">Go to Login <i class="fas fa-sign-in-alt" aria-hidden="true"></i></button>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer">
-            <p>&copy; 2025 Ramazan Çetinkaya. All rights reserved.</p>
-        </div>
-    </div>
+                </section>
+            </form>
+        </section>
 
-    <script src="script.js"></script>
+        <footer class="footer" role="contentinfo">
+            <p>&copy; 2025 Ramazan Çetinkaya. All rights reserved.</p>
+        </footer>
+    </main>
+
+    <script src="script.js" defer></script>
 </body>
 </html>
